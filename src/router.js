@@ -10,8 +10,9 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home,
+      redirect: '/basic/dashboard',
       children: [{
-        path: '/',
+        path: '/basic/dashboard',
         component: ()=> import('./views/dashboard.vue')
       }]
     }

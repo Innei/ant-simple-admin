@@ -1,10 +1,8 @@
 <template>
-  <section>
-    <header>
-      <header-nav :currentWidth="options.currentWidth"></header-nav>
-      <Aside :currentWidth="options.currentWidth"></Aside>
-    </header>
-  </section>
+  <header>
+    <header-nav :currentWidth="options.currentWidth"></header-nav>
+    <Aside :currentWidth="options.currentWidth"></Aside>
+  </header>
 </template>
 
 <script>
@@ -21,7 +19,7 @@ export default {
     //   type: Number
     // }
     options: {
-        type: Object
+      type: Object
     }
   }
 };

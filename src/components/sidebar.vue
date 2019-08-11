@@ -11,13 +11,11 @@
     >
       <a-sub-menu key="sub1" @titleClick="titleClick">
         <span slot="title">
-          <a-icon type="mail" />
-          <span>基本信息</span>
+          <a-icon type="home" />
+          <span>Basic</span>
         </span>
-        <a-menu-item-group key="g1">
-          <a-menu-item key="1">Option 1</a-menu-item>
-          <a-menu-item key="2">Option 2</a-menu-item>
-        </a-menu-item-group>
+        <a-menu-item key="1">Dashboard</a-menu-item>
+        <a-menu-item key="2">Views</a-menu-item>
       </a-sub-menu>
       <a-sub-menu key="sub2" @titleClick="titleClick">
         <span slot="title">
@@ -82,7 +80,7 @@ export default {
       console.log("openKeys", val);
     },
     currentWidth(val) {
-      console.log(this.currentWidth)
+      console.log(this.currentWidth);
     }
   }
 };

@@ -14,9 +14,12 @@ export default {
     };
   },
   components: {
-    Nav: () => import("../components/layout")
+    Nav: () => import("../components/nav")
   }
 };
 </script>
 <style scoped>
+.view {
+  padding: 2rem 0 0 3rem;
+}
 </style>
