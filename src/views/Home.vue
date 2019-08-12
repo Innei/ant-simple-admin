@@ -9,7 +9,8 @@ export default {
   data() {
     return {
       options: {
-        currentWidth: 200 // 当前导航栏的宽度 // TODO 响应式调整
+        currentWidth: 200, // 当前导航栏的宽度 // TODO 响应式调整
+        isScrollDown: false
       }
     };
   },

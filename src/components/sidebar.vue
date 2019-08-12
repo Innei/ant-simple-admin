@@ -3,19 +3,20 @@
     <a-menu
       @click="handleClick"
       class="menu"
-      :defaultSelectedKeys="['1']"
+      :defaultSelectedKeys="defaultSelectedKeys"
       :openKeys.sync="openKeys"
       mode="inline"
       :inlineCollapsed="collapsed"
       :style="'width: ' + currentWidth + 'px'"
+      router
     >
-      <a-sub-menu key="sub1" @titleClick="titleClick">
+      <a-sub-menu key="basic" @titleClick="titleClick">
         <span slot="title">
           <a-icon type="home" />
           <span>Basic</span>
         </span>
-        <a-menu-item key="1">Dashboard</a-menu-item>
-        <a-menu-item key="2">Views</a-menu-item>
+        <a-menu-item key="dashboard">Dashboard</a-menu-item>
+        <a-menu-item key="views">Views</a-menu-item>
       </a-sub-menu>
       <a-sub-menu key="sub2" @titleClick="titleClick">
         <span slot="title">
@@ -47,7 +48,8 @@
 export default {
   data() {
     return {
-      openKeys: ["sub1"]
+      openKeys: ["basic"],
+      defaultSelectedKeys: ["basic", "dashboard"]
     };
   },
   props: {
@@ -64,16 +66,30 @@ export default {
   methods: {
     handleClick(e) {
       console.log("click", e);
+      const route = e.keyPath.reverse().join("/");
+      this.$router.push("/" + route);
     },
     titleClick(e) {
       console.log("titleClick", e);
     },
     updateCurrentNavWidth() {
       this.$route.params.currentWidth = this.currentWidth;
+    },
+    updateSelectKeys(val = this.$route) {
+      const fullPath = val.fullPath;
+      const arr = fullPath.split("/");
+      if (!arr[0]) {
+        arr.shift();
+      }
+      // 两级菜单
+
+      this.openKeys = [String(arr[0])];
+      this.defaultSelectedKeys = [String(arr[1])];
     }
   },
   created() {
     this.updateCurrentNavWidth();
+    this.updateSelectKeys();
   },
   watch: {
     openKeys(val) {
@@ -81,6 +97,9 @@ export default {
     },
     currentWidth(val) {
       console.log(this.currentWidth);
+    },
+    $route(val) {
+      this.updateSelectKeys(val);
     }
   }
 };
@@ -94,5 +113,8 @@ export default {
 }
 .menu::-webkit-scrollbar {
   height: 0px;
+}
+.ant-menu {
+  border-top: 0.5px solid #e8e8e8;
 }
 </style>

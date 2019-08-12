@@ -72,4 +72,7 @@ body::-webkit-scrollbar-track:hover {
   box-shadow: inset 1px 0 0 rgba(0, 0, 0, 0.1);
 }
 
+.ant-layout {
+  background: none !important;
+}
 </style>

@@ -7,13 +7,22 @@
       "value": [
         {
           "name": "One-Say",
-          "times": 500,
-          "ctime": "1565527797623"
+          "times": 500
         },
         {
-          "name": "One-Say",
-          "times": 500,
-          "ctime": "1565527797623"
+          "name": "OneSay",
+          "times": 500
+        }
+      ]
+    },
+    {
+      "name": "统计",
+      "value": [
+        {
+          "time": 500
+        },
+        {
+          "time": 1000
         }
       ]
     }

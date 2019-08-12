@@ -1,9 +1,10 @@
 <template>
-  <header>
+  <header style="height: 3rem">
     <div class="logo" :style="'width: ' + currentWidth + 'px'">
       <span class="text">SAdmin</span>
     </div>
-    <nav :style="'margin-left: ' + currentWidth + 'px'">
+    <transition name="fade">
+    <nav :style="'margin-left: ' + currentWidth + 'px'" v-show="!isScrollDown">
       <a-menu v-model="current" mode="horizontal">
         <a-menu-item key="basic">
           <a-icon type="home" />Basic
@@ -33,6 +34,7 @@
         </a-sub-menu>
       </a-menu>
     </nav>
+    </transition>
   </header>
 </template>
 
@@ -47,6 +49,9 @@ export default {
   props: {
     currentWidth: {
       type: Number
+    },
+    isScrollDown:{
+      type: Boolean
     }
   }
 };
@@ -54,12 +59,20 @@ export default {
 
 <style scoped>
 .logo {
-  position: absolute;
+  position: fixed;
   padding: 0.5rem;
   text-align: center;
   user-select: none;
 }
 .logo .text {
   font-size: 1.5rem;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
