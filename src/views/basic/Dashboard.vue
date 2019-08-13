@@ -1,5 +1,20 @@
 <template>
-  <a-layout>
+  <page-layout>
+    <template v-slot:title>仪表盘</template>
+    <div class="basic">
+      <p>当前已有 {{req_data.api_count}} 个 API. 累计请求 {{req_data.total_times}} 次.</p>
+      <p>点击下面的链接快速开始:</p>
+    </div>
+    <a-list :grid="{ column: 3 }" :split="false" :dataSource="req_data.info_list">
+      <a-list-item slot="renderItem" slot-scope="item, index">
+        <a-card :title="item.name" :key="index">
+          <a-card v-for="api in item.value" :key="api.name">{{api.name || api.time}}</a-card>
+        </a-card>
+      </a-list-item>
+    </a-list>
+  </page-layout>
+
+  <!-- <a-layout>
     <breadcrumb />
     <section class="title">
       <h2>仪表盘</h2>
@@ -18,7 +33,7 @@
         </a-list-item>
       </a-list>
     </section>
-  </a-layout>
+  </a-layout>-->
 </template>
 
 <script>
@@ -36,7 +51,7 @@ export default {
     });
   },
   components: {
-    breadcrumb: () => import("../../components/breadcrumb")
+    pageLayout: () => import("../../components/page-layout")
   }
 };
 </script>

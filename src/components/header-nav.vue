@@ -3,8 +3,8 @@
     <div class="logo" :style="'width: ' + currentWidth + 'px'">
       <span class="text">SAdmin</span>
     </div>
-    <transition name="fade">
-    <nav :style="'margin-left: ' + currentWidth + 'px'" v-show="!isScrollDown">
+
+    <nav :style="'margin-left: ' + currentWidth + 'px'" :class="isScrollDown ? 'shadow' : ''">
       <a-menu v-model="current" mode="horizontal">
         <a-menu-item key="basic">
           <a-icon type="home" />Basic
@@ -34,7 +34,6 @@
         </a-sub-menu>
       </a-menu>
     </nav>
-    </transition>
   </header>
 </template>
 
@@ -50,7 +49,7 @@ export default {
     currentWidth: {
       type: Number
     },
-    isScrollDown:{
+    isScrollDown: {
       type: Boolean
     }
   }
@@ -67,12 +66,7 @@ export default {
 .logo .text {
   font-size: 1.5rem;
 }
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
+.shadow {
+  box-shadow: -6px 11.2px 59px -22px;
 }
 </style>
