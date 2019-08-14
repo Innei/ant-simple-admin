@@ -1,10 +1,11 @@
 <template>
   <page-layout>
     <template v-slot:title>仪表盘</template>
-    <div class="basic">
+    <template v-slot:basic>
       <p>当前已有 {{req_data.api_count}} 个 API. 累计请求 {{req_data.total_times}} 次.</p>
       <p>点击下面的链接快速开始:</p>
-    </div>
+    </template>
+
     <a-list :grid="{ column: 3 }" :split="false" :dataSource="req_data.info_list">
       <a-list-item slot="renderItem" slot-scope="item, index">
         <a-card :title="item.name" :key="index">

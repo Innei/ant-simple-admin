@@ -13,12 +13,28 @@ export default new Router({
       redirect: '/basic/dashboard',
       children: [
         {
-          path: '/basic/dashboard',
-          component: () => import('./views/basic/Dashboard.vue')
+          path: 'basic',
+          component: () => import('./views/basic/Home.vue'),
+          children: [
+            {
+              path: 'dashboard',
+              component: () => import('./views/basic/Dashboard.vue')
+            },
+            {
+              path: 'views',
+              component: () => import('./views/basic/View.vue')
+            }
+          ]
         },
         {
-          path: '/basic/views',
-          component: () => import('./views/basic/View.vue')
+          path: 'management',
+          component: () => import('./views/management/Home.vue'),
+          children: [
+            {
+              path: 'list-items',
+              component: () => import('./views/management/ListItem.vue')
+            }
+          ]
         }
       ]
     }
