@@ -21,7 +21,7 @@ export default {
 </script>
 <style scoped>
 .view {
-  padding: 5rem 0 0 3rem;
+  padding: 5rem 3rem 2rem;
   /* margin-top: 3rem */
 }
 </style>
