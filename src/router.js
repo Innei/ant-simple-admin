@@ -4,7 +4,7 @@ import Home from './views/Home.vue'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
@@ -41,7 +41,27 @@ export default new Router({
     {
       path: '/login',
       component: () => import('./views/login.vue'),
-      name: 'login'
+      name: 'login',
+      meta: { isPublic: true }
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  if (!to.meta.isPublic && !localStorage.token) {
+    return next('/login')
+  } else if (localStorage && !to.meta.isPublic) {
+    Vue.prototype.$http
+      .post('login/auth', { token: localStorage.token })
+      .then(res => {
+        if (res.data.code === 200) {
+          return next()
+        } else {
+          Vue.prototype.$message.error(res.data.msg)
+          return next('/login')
+        }
+      })
+  }
+  next()
+})
+export default router

@@ -31,7 +31,9 @@
         </span>
         <span class="editable-row-operations" v-if="!record.editable">
           <span>
-            <a @click="() => del(record.key)">删除</a>
+            <a-popconfirm title="Sure to delete?" @confirm="() => del(record.key)">
+              <a>删除</a>
+            </a-popconfirm>
           </span>
         </span>
       </template>
@@ -175,6 +177,7 @@ export default {
         if (res.data.ok === 1) {
           this.$message.success("删除成功");
           this.data.splice(index, 1);
+          this.options.isDelete = false;
         } else {
           this.$message.error("删除失败");
         }
