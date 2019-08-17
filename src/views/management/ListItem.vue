@@ -2,7 +2,7 @@
   <page-layout>
     <template v-slot:title>查看内容</template>
     <template v-slot:basic>
-      <p>以下将列出最近创建的条目, 最高 200 条</p>
+      <p>以下将列出最近创建的条目, 服务端限制最多列出 200 条</p>
     </template>
 
     <a-table :columns="columns" :dataSource="data" bordered>
@@ -168,16 +168,12 @@ export default {
     },
     del(key) {
       const target = this.data.filter(item => key === item.key)[0];
-      const index = this.data.findIndex((item, index) => {
-        if (item.id === target.id) {
-          return index;
-        }
-      });
+      const index = this.data.findIndex((item, index) => item.id == target.id);
+
       this.$http.delete(`says/del/${target.id}`).then(res => {
         if (res.data.ok === 1) {
           this.$message.success("删除成功");
           this.data.splice(index, 1);
-          this.options.isDelete = false;
         } else {
           this.$message.error("删除失败");
         }

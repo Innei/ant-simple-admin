@@ -2,7 +2,7 @@
   <header class="header">
     <header-nav :currentWidth="options.currentWidth" :isScrollDown="options.isScrollDown"></header-nav>
 
-    <Aside :currentWidth="options.currentWidth"></Aside>
+    <Aside :currentWidth="options.currentWidth" :collapsed="options.collapsed"></Aside>
   </header>
 </template>
 
@@ -30,6 +30,6 @@ export default {
   position: fixed;
   left: 0;
   right: 0;
-  z-index: 99
+  z-index: 99;
 }
 </style>

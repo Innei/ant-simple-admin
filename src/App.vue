@@ -55,6 +55,7 @@ body {
 }
 ::-webkit-scrollbar {
   width: 3px;
+  height: 0px;
 }
 
 ::-webkit-scrollbar-track:hover {

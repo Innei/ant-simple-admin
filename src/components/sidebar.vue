@@ -7,7 +7,7 @@
       :openKeys.sync="openKeys"
       mode="inline"
       :inlineCollapsed="collapsed"
-      :style="'width: ' + currentWidth + 'px'"
+      :style="collapsed ? 'width: 6rem': 'width: ' + currentWidth + 'px'"
       router
     >
       <a-sub-menu key="basic" @titleClick="titleClick">

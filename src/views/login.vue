@@ -60,7 +60,7 @@ export default {
             if (res.data.token) {
               localStorage.token = res.data.token;
               this.$message.success("登陆成功");
-              this.$router.push('/basic/dashboard')
+              this.$router.push("/basic/dashboard");
             }
           });
         }

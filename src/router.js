@@ -33,6 +33,10 @@ const router = new Router({
             {
               path: 'list-items',
               component: () => import('./views/management/ListItem.vue')
+            },
+            {
+              path: 'create-items',
+              component: () => import('./views/management/CreateItem.vue')
             }
           ]
         }

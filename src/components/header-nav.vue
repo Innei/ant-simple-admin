@@ -1,5 +1,5 @@
 <template>
-  <header style="height: 3rem">
+  <header style="height: 48px">
     <div class="logo" :style="'width: ' + currentWidth + 'px'">
       <span class="text">SAdmin</span>
     </div>
